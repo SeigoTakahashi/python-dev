@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title%}Django's Blog - 詳細ページ{% endblock %}
+
+{% block header%}
+<header class="masthead" style="background-image: url(/static/img/post-bg.jpg)">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading">
+          <h1>Djangoとは</h1>
+          <h2 class="subheading">Pythonで実装されたWebフレームワーク (Javaにお</h2>
+          <span class="meta">
+            <a href="index.html">Django's Blog</a>
+            2022年1月27日16:12に投稿に投稿／カテゴリ:science</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block contents%}
+{% include 'blog/sidebar.html' %}
+<article class="col-sm-9 mb-4">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5">
+      <p>Pythonで実装されたWebフレームワーク (JavaにおけるSpringのようなもの)
+        無料のオープンソースとして公開されていて、だれでも利用可能
+        [* MTV] とよばれる3層構造で定義される</p>
+      <img src="{% static 'img/django-logo-negative.png'%}" class="bd-placeholder-img card-img-top w-50">
+    </div>
+  </div>
+</article>
+</div>
+<hr>
+{% endblock %}

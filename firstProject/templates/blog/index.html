@@ -1,0 +1,120 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title%}Django's Blog{% endblock %}
+
+{% block header%}
+<header class="masthead" style="background-image: url({% static 'img/home-bg.jpg'%})">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="site-heading">
+          <!-- ヘッダーの大見出し(タイトル)を変更 -->
+          <h1>Django's Blog</h1>
+          <!-- サブタイトルを変更 -->
+          <span class="subheading">A Blog Theme by Start Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block contents%}
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <div class="post-preview">
+        <a href="{% url 'blog:detail_article' 1234 %}">
+          <h2 class="post-title">
+            テストページ
+          </h2>
+          <h3 class="post-subtitle">
+            <span style="font-size : 16pt">
+              これはテストページです。
+            </span>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <a href="#">Django's Blog</a>
+          2022年1月27日16:12に投稿／カテゴリ:Job
+        </p>
+      </div>
+      <hr class="my-4" />
+      <div class="post-preview">
+        <a href="{% url 'blog:detail_article' 1111 %}">
+          <h2 class="post-title">
+            アプリケーションの作成
+          </h2>
+          <h3 class="post-subtitle">
+            <span style="font-size : 16pt">
+              プロジェクトのルートフォルダ(manage.pyがあるフォルダ)に移動し、
+              以下のコマンドを入力するとアプリケーション用のフォルダが作られる。
+            </span>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <a href="#">Django's Blog</a>
+          2022年1月27日16:12に投稿／カテゴリ:winter
+        </p>
+      </div>
+      <hr class="my-4" />
+      <div class="post-preview">
+        <a href="{% url 'blog:detail_article' 2222 %}">
+          <h2 class="post-title">
+            サーバの起動
+          </h2>
+          <h3 class="post-subtitle">
+            <span style="font-size : 16pt">
+              ターミナル上でcdコマンドを実行し、プロジェクトのルートフォルダ(外側のfirstProject)に移動する
+            </span>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <a href="#">Django's Blog</a>
+          2022年1月30日17:50に投稿／カテゴリ:study
+        </p>
+      </div>
+      <hr class="my-4" />
+      <div class="post-preview">
+        <a href="{% url 'blog:detail_article' 3333 %}">
+          <h2 class="post-title">
+            Djangoのインストール
+          </h2>
+          <h3 class="post-subtitle">
+            <span style="font-size : 16pt">
+              コマンドプロンプトを起動して以下のコードを実行する
+            </span>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <a href="#">Django's Blog</a>
+          2022年1月27日16:12に投稿／カテゴリ:music
+        </p>
+      </div>
+      <hr class="my-4" />
+      <div class="post-preview">
+        <a href="{% url 'blog:detail_article' 4444 %}">
+          <h2 class="post-title">
+            Djangoとは
+          </h2>
+          <h3 class="post-subtitle">
+            <span style="font-size : 16pt">
+              Pythonで実装されたWebフレームワーク (JavaにおけるSpringのようなもの)
+              無料のオープンソースとして公開されていて、だれでも利用可能
+              [* MTV] とよばれる3層構造で定義される
+            </span>
+          </h3>
+        </a>
+        <p class="post-meta">
+          <a href="#">Django's Blog</a>
+          2022年1月27日16:12に投稿／カテゴリ:science
+        </p>
+      </div>
+      <hr class="my-4" />
+      {% include 'blog/pagenation.html' %}
+    </div>
+  </div>
+</div>
+<hr class="my-4" />
+{% endblock %}

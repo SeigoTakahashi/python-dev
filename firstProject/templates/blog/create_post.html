@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title%}Django's Blog - 投稿{% endblock %}
+
+{% block header%}
+<header class="masthead" style="background-image: url(/static/img/post-sample-image.jpg)">
+  <div class="container position-relative px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="page-heading">
+          <h1>Post New Article</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{% block contents%}
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <div class="my-5">
+        <form method="post">
+          <div class="form-floating">
+            <div class="form-group floating-label-form-group controls">
+              <label for="id_title">題名:</label>
+              <input type="text" name="title" maxlength="200" required="" id="id_title">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="form-floating">
+            <div class="form-group floating-label-form-group controls">
+              <label for="id_content">本文:</label>
+              <textarea name="content" cols="40" rows="10" required="" id="id_content"></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+
+          <div class="form-floating">
+            <div class="form-group floating-label-form-group controls">
+              <label for="id_category">カテゴリ:</label>
+              <select name="category" required="" id="id_category">
+                <option value="" selected="">---------</option>
+                <option value="science">科学のこと</option>
+                <option value="dailylife">日常のこと</option>
+                <option value="music">音楽のこと</option>
+              </select>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="form-floating">
+            <div class="form-group floating-label-form-group controls">
+              <label for="id_image">画像:</label>
+              <input type="file" name="image" accept="image/*" id="id_image">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %}
