@@ -1,3 +1,5 @@
 from django.contrib import admin
+from photo.models import Category, PhotoPost
 
-# Register your models here.
+admin.site.register(Category)
+admin.site.register(PhotoPost)
