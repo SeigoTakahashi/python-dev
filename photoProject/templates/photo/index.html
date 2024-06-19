@@ -31,5 +31,7 @@ Photo Gallery
 </section>
 
 {% include 'photo/photo_list.html' %}
+{% if is_paginated %}
 {% include 'photo/pagenation.html'%}
+{% endif %}
 {% endblock%}

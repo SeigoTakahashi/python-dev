@@ -1,7 +1,11 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from photo.models import PhotoPost
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = 'photo/index.html'
+    queryset = PhotoPost.objects.order_by('-posted_at')
+    context_object_name = 'photo_list'
+    paginate_by = 4
 
 class PostPhotoView(TemplateView):
     template_name = 'photo/post_photo.html'

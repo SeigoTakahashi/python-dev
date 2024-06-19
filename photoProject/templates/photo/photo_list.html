@@ -4,170 +4,32 @@
   <div class="container">
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for photo in photo_list %}
       <div class="col">
         <div class="card shadow-sm">
           <img src="{% static 'img/snowman.png'%}">
 
           <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
+            <p class="card-text">{{photo.title}}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
+                <a href="{% url 'photo:detail_photo' photo.pk%}" class="btn btn-sm btn-outline-secondary">詳細</a>
+                <a href="{% url 'photo:category' photo.category.title%}" class="btn btn-sm btn-outline-secondary">
+                  {{photo.category.title}}</a>
               </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
+              {% if photo.user %}
+              <a href="{% url 'photo:user_list' photo.user.pk%}" class="text-decoration-none"><small
+                  class="text-muted">{{photo.user.username}}</small></a>
+              {% else %}
+              <a href="{% url 'photo:user_list' '#'%}" class="text-decoration-none"><small
+                  class="text-muted">none</small></a>
+              {% endif %}
+
             </div>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow-sm">
-          <img src="{% static 'img/snowman.png'%}">
-
-          <div class="card-body">
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-              content. This content is a little bit longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <a href="{% url 'photo:detail_photo' 1111%}" class="btn btn-sm btn-outline-secondary">詳細</a>
-                <a href="{% url 'photo:category' '風景'%}" class="btn btn-sm btn-outline-secondary">風景</a>
-              </div>
-              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
-                  class="text-muted">hogehoge</small></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
