@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from photo.models import PhotoPost
 
 class IndexView(ListView):
@@ -19,5 +19,7 @@ class CategoryView(TemplateView):
 class UserListView(TemplateView):
     template_name = 'photo/index.html'
 
-class DetailPhotoView(TemplateView):
+class DetailPhotoView(DetailView):
     template_name = 'photo/detail.html'
+    model = PhotoPost
+    pk_url_kwarg = 'id'
