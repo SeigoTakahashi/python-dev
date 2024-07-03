@@ -22,10 +22,6 @@ class DetailArticleView(DetailView):
     model = BlogPost
     pk_url_kwarg = 'id'
 
-    def get_context_data(self, **kwargs):
-         context = super().get_context_data(**kwargs)
-         print(context)
-         return context
 
 def edit_article(request, id):
     return HttpResponse(f'記事:{id}番目を編集します。')
