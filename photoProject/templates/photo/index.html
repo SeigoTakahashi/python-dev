@@ -21,8 +21,7 @@ Photo Gallery
   </div>
   <form method="GET" action="/">
     <div class="input-group mb-3" style="margin-top: 10px;">
-      <input type="text" class="form-control" placeholder="検索文字を入力" aria-label="検索文字を入力"
-        aria-describedby="button-addon2">
+      {{ search_form.key }}
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="submit" id="button-addon2">検索</button>
       </div>
