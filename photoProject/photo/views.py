@@ -1,7 +1,8 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView,CreateView
 from photo.models import PhotoPost
-from .forms import SearchForm
+from .forms import SearchForm,PhotoPostForm
 from django.db.models import Q
+from django.urls import reverse_lazy
 
 class IndexView(ListView):
     template_name = 'photo/index.html'
@@ -20,8 +21,11 @@ class IndexView(ListView):
         return queryset
     
 
-class PostPhotoView(TemplateView):
+class PostPhotoView(CreateView):
+    model = PhotoPost
     template_name = 'photo/post_photo.html'
+    form_class = PhotoPostForm
+    success_url = reverse_lazy("photo:index")
 
 class MyPageView(TemplateView):
     template_name = 'photo/mypage.html'

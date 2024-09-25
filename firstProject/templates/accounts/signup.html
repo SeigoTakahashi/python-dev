@@ -26,36 +26,19 @@
       <h3>サインアップ</h3>
       <!-- サインアップのフォームを配置 -->
       <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
         <p>
-          {{ user_form.username.label_tag }}<br>
-          {{ user_form.username }}
-          <small style="color: grey">この項目は必須です。半角アルファベット、半角数字、@/./+/-/_ で150文字以下にしてください。</small>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+        <p style="color:red">{{ error }}</p>
+        {% endfor %}
         </p>
-        <p>
-          {{ user_form.email.label_tag }}<br>
-          {{ user_form.email }}
-        </p>
-        <p>
-          {{ user_form.password1.label_tag }}<br>
-          {{ user_form.password1 }}
-          <small style="color: grey"></small>
-        </p>
-        <ul>
-          <li><small style="color: grey">あなたの他の個人情報と似ているパスワードにはできません。</small></li>
-          <li><small style="color: grey">パスワードは最低 8 文字以上必要です。</small></li>
-          <li><small style="color: grey">よく使われるパスワードにはできません。</small></li>
-          <li><small style="color: grey">数字だけのパスワードにはできません。</small></li>
-        </ul>
-        <p></p>
-        <p>
-          {{ user_form.password2.label_tag }}<br>
-          {{ user_form.password2 }}
-          <small style="color: grey">確認のため、再度パスワードを入力してください。</small>
-        </p>
-        <p style="color:red">
-          ※メールアドレスはパスワードをリセットする際に必要になりますので、
-          登録しておくことをお勧めします。
-        </p>
+        {% endfor %}
         <input type="submit" value="サインアップ">
       </form>
       <br>

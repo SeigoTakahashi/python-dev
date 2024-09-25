@@ -21,7 +21,7 @@
               <a href="{% url 'photo:user_list' photo.user.pk%}" class="text-decoration-none"><small
                   class="text-muted">{{photo.user.username}}</small></a>
               {% else %}
-              <a href="{% url 'photo:user_list' '#'%}" class="text-decoration-none"><small
+              <a href="{% url 'photo:user_list' 1111%}" class="text-decoration-none"><small
                   class="text-muted">none</small></a>
               {% endif %}
 

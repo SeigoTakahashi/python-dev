@@ -1,7 +1,9 @@
+from datetime import datetime
 from django.http import HttpResponse
-from django.views.generic import TemplateView,ListView,DetailView
+from django.views.generic import TemplateView,ListView,DetailView,FormView,CreateView
 from blog.models import BlogPost
-from .forms import SearchForm
+from .forms import SearchForm,PostForm
+from django.urls import reverse_lazy
 
 class IndexView(ListView):
     template_name = 'blog/index.html'
@@ -23,8 +25,11 @@ class IndexView(ListView):
         return queryset
 
 
-class PostArticleView(TemplateView):
+class PostArticleView(CreateView):
+    model = BlogPost
     template_name = 'blog/create_post.html'
+    form_class = PostForm
+    success_url = reverse_lazy("blog:index")
 
 class DetailArticleView(DetailView):
     template_name = 'blog/detail_article.html'

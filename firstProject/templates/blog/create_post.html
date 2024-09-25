@@ -23,40 +23,18 @@
     <div class="col-md-10 col-lg-8 col-xl-7">
       <div class="my-5">
         <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
           <div class="form-floating">
             <div class="form-group floating-label-form-group controls">
-              <label for="id_title">題名:</label>
-              <input type="text" name="title" maxlength="200" required="" id="id_title">
-              <p class="help-block text-danger"></p>
+              {{ field.label_tag }}
+              {{ field }}
+              {% for err in field.errors %}
+              <p class="help-block text-danger">{{ err }}</p>
+              {% endfor %}
             </div>
           </div>
-          <div class="form-floating">
-            <div class="form-group floating-label-form-group controls">
-              <label for="id_content">本文:</label>
-              <textarea name="content" cols="40" rows="10" required="" id="id_content"></textarea>
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-
-          <div class="form-floating">
-            <div class="form-group floating-label-form-group controls">
-              <label for="id_category">カテゴリ:</label>
-              <select name="category" required="" id="id_category">
-                <option value="" selected="">---------</option>
-                <option value="science">科学のこと</option>
-                <option value="dailylife">日常のこと</option>
-                <option value="music">音楽のこと</option>
-              </select>
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <div class="form-floating">
-            <div class="form-group floating-label-form-group controls">
-              <label for="id_image">画像:</label>
-              <input type="file" name="image" accept="image/*" id="id_image">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
+          {% endfor %}
           <br>
           <button type="submit" class="btn btn-primary" id="sendMessageButton">Post</button>
         </form>
