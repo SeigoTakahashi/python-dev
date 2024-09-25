@@ -11,9 +11,11 @@ class SearchForm(forms.Form):
 class PhotoPostForm(forms.ModelForm):
     class Meta:
         model = PhotoPost
-        fields = ['category','title','comment']
+        fields = ['category','title','comment','image1','image2']
         labels = {
             'category':'カテゴリ',
             'title':'タイトル',
             'comment':'コメント',
+            'image1':'イメージ1',
+            'image2':'イメージ2',
         }

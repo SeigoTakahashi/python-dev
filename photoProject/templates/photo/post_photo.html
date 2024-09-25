@@ -15,7 +15,7 @@ Post
     <div class="col offset-2">
       <!-- ファイルをアップロードする場合は
              enctype="multipart/form-data"が必要 -->
-      <form method="POST">
+      <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
           {% for field in form %}

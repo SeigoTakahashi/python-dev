@@ -39,5 +39,12 @@ class BlogPost(models.Model):
         auto_now_add=True
     )
 
+    image = models.ImageField(				
+        verbose_name='イメージ',				
+        upload_to ='photos',				
+        null = True,						
+        blank=True,							
+    )
+
     def __str__(self):
         return self.title

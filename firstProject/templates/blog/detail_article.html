@@ -29,7 +29,9 @@
   <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5">
       <p>{{ object.content }}</p>
-      <img src="{% static 'img/django-logo-negative.png'%}" class="bd-placeholder-img card-img-top w-50">
+      {% if object.image %}
+      <img src="{{ object.image.url }}" class="bd-placeholder-img card-img-top w-50">
+      {% endif %}
     </div>
   </div>
 </article>

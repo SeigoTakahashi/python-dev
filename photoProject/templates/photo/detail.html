@@ -21,9 +21,17 @@ Photo Detail
       <!-- 投稿日時 -->
       <p>{{ object.posted_at | date:"Y/m/d"}} {{ object.posted_at | time:"H:i" }}に投稿</p>
       <!-- 1枚目の写真 -->
+      {% if object.image1 %}
+      <p><img src="{{ object.image1.url }}"></img></p>
+      {% else %}
       <p><img src="{% static 'img/snowman.png'%}"></img></p>
+      {% endif %}
       <!-- 2枚目の写真が投稿されていたら表示する -->
+      {% if object.image2 %}
+      <p><img src="{{ object.image2.url }}"></img></p>
+      {% else %}
       <p><img src="{% static 'img/snowman.png'%}"></img></p>
+      {% endif %}
 
       <!-- 投稿写真がログイン中のユーザーのものであれば削除ボタンを表示 -->
       <form method="POST">

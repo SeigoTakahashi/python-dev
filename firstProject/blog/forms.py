@@ -7,9 +7,10 @@ class SearchForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ["title","content","category"]
+        fields = ["title","content","category","image"]
         labels = {
             "title":"題名",
             "content":"本文",
             "category":"カテゴリ",
+            "image":"画像",
         }
