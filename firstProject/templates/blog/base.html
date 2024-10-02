@@ -34,12 +34,27 @@
           <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:post_article'%}">POST</a>
           </li>
+          {% if user.is_authenticated %}
+          <!-- <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'accounts:logout' %}">LOGOUT</a>
+          </li> -->
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="login.html">LOGIN</a>
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="javascript:logout.submit()">LOGOUT</a>
+          </li>
+          <form action='{% url "accounts:logout" %}' method='post' name='logout' style="display: none;">
+            {% csrf_token %}
+          </form>
+          <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'blog:mypage' %}">{{ user.username }}</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'accounts:login' %}">LOGIN</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'accounts:signup'%}">SIGNUP</a>
+            <a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'accounts:signup' %}">SIGNUP</a>
           </li>
+          {% endif %}
         </ul>
         <form method="GET" action="/" class="w-50 h-25">
           <div class="input-group">

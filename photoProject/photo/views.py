@@ -3,6 +3,8 @@ from photo.models import PhotoPost
 from .forms import SearchForm,PhotoPostForm
 from django.db.models import Q
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator		
+from django.contrib.auth.decorators import login_required
 
 class IndexView(ListView):
     template_name = 'photo/index.html'
@@ -20,12 +22,21 @@ class IndexView(ListView):
         queryset = PhotoPost.objects.filter(Q(title__contains=keyword) | Q(comment__contains=keyword)).order_by('-posted_at')
         return queryset
     
-
+@method_decorator(login_required, name='dispatch')
 class PostPhotoView(CreateView):
     model = PhotoPost
     template_name = 'photo/post_photo.html'
     form_class = PhotoPostForm
     success_url = reverse_lazy("photo:index")
+
+    def form_valid(self, form):
+        postdata = form.save(commit=False)
+        
+        postdata.user = self.request.user
+        
+        postdata.save()
+        
+        return super().form_valid(form)
 
 class MyPageView(TemplateView):
     template_name = 'photo/mypage.html'
@@ -33,8 +44,19 @@ class MyPageView(TemplateView):
 class CategoryView(TemplateView):
     template_name = 'photo/index.html'
 
-class UserListView(TemplateView):
+class UserListView(ListView):
     template_name = 'photo/index.html'
+    context_object_name = 'photo_list'
+    paginate_by = 4
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm(self.request.GET)
+        return context
+    def get_queryset(self):
+        user_id = self.kwargs.get('id', 1)
+        print(f"user_id{user_id}")
+        queryset = PhotoPost.objects.filter(user=user_id).order_by('-posted_at')
+        return queryset
 
 class DetailPhotoView(DetailView):
     template_name = 'photo/detail.html'

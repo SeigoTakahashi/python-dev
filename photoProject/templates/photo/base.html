@@ -48,8 +48,15 @@
           <div class="col-sm-4 offset-md-1 py-4">
             <h4 class="text-white">Contact</h4>
             <ul class="list-unstyled">
+              {% if user.is_authenticated %}
+              <li><a href="javascript:logoutMenu.submit()" class="text-white">ログアウト</a></li>
+              <form action='{% url "accounts:logout" %}' method='post' name='logoutMenu' style="display: none;">
+                {% csrf_token %}
+              </form>
+              {% else %}
+              <li><a href="{% url 'accounts:login' %}" class="text-white">ログイン</a></li>
               <li><a href="{% url 'accounts:signup'%}" class="text-white">サインアップ</a></li>
-              <li><a href="login.html" class="text-white">ログイン</a></li>
+              {% endif %}
               <li><a href="#" class="text-white">Email me</a></li>
             </ul>
           </div>
