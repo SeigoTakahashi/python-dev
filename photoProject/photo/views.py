@@ -38,11 +38,30 @@ class PostPhotoView(CreateView):
         
         return super().form_valid(form)
 
-class MyPageView(TemplateView):
+class MyPageView(ListView):
     template_name = 'photo/mypage.html'
+    context_object_name = 'photo_list'
+    paginate_by = 4
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['count'] = len(PhotoPost.objects.filter(user=self.request.user))
+        return context
+    def get_queryset(self):
+        queryset = PhotoPost.objects.filter(user=self.request.user).order_by('-posted_at')
+        return queryset
 
-class CategoryView(TemplateView):
+class CategoryView(ListView):
     template_name = 'photo/index.html'
+    context_object_name = 'photo_list'
+    paginate_by = 4
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchForm(self.request.GET)
+        return context
+    def get_queryset(self):
+        category = self.kwargs.get('category', '')
+        queryset = PhotoPost.objects.filter(category__title=category).order_by('-posted_at')
+        return queryset
 
 class UserListView(ListView):
     template_name = 'photo/index.html'
